@@ -1,0 +1,6 @@
+<!--pages/detail/detail.wxml-->
+<view>《{{title}}》  {{dynasty}} {{author}}</view>
+<view>{{content}}</view>
+<view wx:for="{{comment}}">
+<view>{{index}}:{{item}}</view>
+</view>
