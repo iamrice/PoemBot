@@ -1,0 +1,23 @@
+<view class='box'>
+  <view class='top'>
+    <view class='img_box' style='width:{{img_width}}rpx;height:{{img_height}}rpx;left:{{mask_left}}rpx;top:{{mask_top}}rpx' wx:if='{{!show_canvas}}'>
+      <image class='img' src='{{img}}' style='width:{{img_width}}rpx;height:{{img_height}}rpx;left:{{img_left}}rpx;top:{{img_top}}rpx'></image>
+      <view class='img_mask {{rate>=1.5?"row":""}}' style='width:{{img_width}}rpx;height:{{img_height}}rpx;left:{{mask_left}}rpx;top:{{mask_top}}rpx' bindtouchstart='start' bindtouchmove='move' bindtouchend='end'>
+        <view class='img_mask_top' style='width:{{mask_width}}rpx;height:{{mask_height}}rpx;'></view>
+        <view style='width:600rpx;height:400rpx;'></view>
+        <view class='img_mask_bottom' style='width:{{mask_width}}rpx;height:{{mask_height}}rpx;'></view>
+      </view>
+    </view>
+    <view class='clip_box' style='left:{{clip_left}}rpx;top:{{clip_top}}rpx' bindtouchstart='start' bindtouchmove='move' bindtouchend='end'></view>
+  </view>
+  <view class='btn' style='height:{{bottom_height}}rpx'>
+    <view bindtap='check'>确定</view>
+  </view>
+</view>
+
+
+
+<canvas canvas-id='myCanvas' class='canvas' style='width:{{img_width}}rpx;height:{{img_height}}rpx;left:-{{height}}rpx;top:0'>
+</canvas>
+
+<image class='preview_img {{show_canvas?"img_show":""}}' src='{{img}}' style='width:600rpx;height:600rpx;left:{{clip_left}}rpx;top:{{clip_top}}rpx' bindtap='previewImg' wx:if='{{show_canvas}}'></image>

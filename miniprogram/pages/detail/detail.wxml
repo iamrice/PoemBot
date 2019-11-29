@@ -1,0 +1,47 @@
+<!--pages/detail/detail.wxml-->
+
+<image class='background' src='cloud://cloudforfdemo-mhxfi.636c-cloudforfdemo-mhxfi/bg1.png' mode="aspectFill">
+</image>
+<!--view style='padding-bottom:200rpx;'>
+<view class='title-block'><text>《{{title}}》\n{{dynasty}} {{author}}</text></view>
+<view wx:if="{{!if_has_comment.length}}" class='text-block' wx:for="{{contentList}}">{{item}}</view>
+<view wx:if="{{if_has_comment.length}}">
+  <block wx:for="{{contentList}}" class='text-block'>
+    <text wx:if="{{item==';'}}" >\n</text>
+    <text wx:elif="{{if_has_comment[index]==0}}">{{item}}</text>
+    <text wx:else class='keyword' id="{{item}}" bindtap='clickKey'>{{item}}</text>
+  </block>
+</view>
+
+<view class='text-block' wx:if="{{currentKeyword}}">{{currentKeyword}}:{{comment[currentKeyword]}}</view>
+</view>
+<!--view wx:for="{{comment}}" class='text-block'>
+{{index}}:{{item}}
+</view-->
+<view class='wraper'>
+  <view class='header'>
+    <text>《{{title}}》</text>
+  </view>
+  <view class='header2'>
+    <text>{{dynasty}} {{author}}</text>
+  </view>
+  <view class='main'>
+    <scroll-view class='main-scroll' scroll-y style="height: 100%" >
+      <view class='main-list'>
+        <view style='padding-bottom:200rpx;'>
+          <text wx:if="{{!if_has_comment.length}}" wx:for="{{contentList}}" style='text-align:center;'>{{item}}\n</text>
+          <view wx:if="{{if_has_comment.length}}">
+            <block wx:for="{{contentList}}">
+              <text wx:if="{{item==';'}}">\n</text>
+              <text wx:elif="{{if_has_comment[index]==0}}">{{item}}</text>
+              <text wx:else class='keyword' id="{{item}}" bindtap='clickKey'>{{item}}</text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view  class='footer'>
+  <view wx:if="{{currentKeyword}}">{{currentKeyword}}:{{comment[currentKeyword]}}</view>
+  </view>
+</view>
