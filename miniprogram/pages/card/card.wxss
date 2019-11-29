@@ -1,0 +1,79 @@
+.box {
+  width: 750rpx;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.top {
+  height: 1000rpx;
+}
+
+.img_box {
+  position: absolute;
+  overflow: hidden;
+}
+
+.img {
+  position: absolute;
+}
+
+.img_mask {
+  position: fixed;
+  z-index: 5;
+}
+
+.row {
+  display: flex;
+}
+
+.img_mask_top, .img_mask_bottom {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+.clip_box {
+  width: 600rpx;
+  height: 400rpx;
+  box-sizing: border-box;
+  background: rgba(225, 225, 225, 0.1);
+  position: fixed;
+  z-index: 10;
+}
+
+.btn {
+  width: 750rpx;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  position: fixed;
+  z-index: 10;
+}
+
+.btn>view {
+  width: 216rpx;
+  height: 80rpx;
+  border: 2rpx solid #01aa01;
+  color: #01aa01;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas {
+  position: absolute;
+}
+
+.preview_img {
+  position: fixed;
+  z-index: -1;
+}
+
+.img_show {
+  z-index: 20;
+}

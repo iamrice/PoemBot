@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/detail/detail",
+    "pages/card/card",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -14,8 +15,8 @@
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#F3EBE2",
+    "navigationBarTitleText": "识图作诗",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

@@ -1,86 +1,69 @@
 <!--index.wxml-->
-<view class="container">
+<view style='padding-bottom:150rpx;' wx:if="{{canvasHidden}}">
 
-  <!-- 用户 openid 
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-    </view>
+  <view wx:if="{{image}}" style='display:flex;'>
+  <image src="{{image}}" class='user-image-block' mode="widthFix"></image>
+  </view>
+  <!--view wx:else class='text-block'><text>欢迎光临！你好，我是一只不爱古诗的bot，最近我的主人交给我一个任务:识别用户上传的图片，匹配出相关主题的诗句。</text><text>\n请上传一张你喜欢的图片，我会努力帮你找出合适的古诗词的！</text></view-->
+  <view wx:else>
+    <image src="login.png" class='image-block' mode="widthFix"></image>
+    <image src="text.png" class='image-block' mode="widthFix"></image>
   </view>
 
-
-  <!-- 上传图片 >
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
-    </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-    </view>
+  <view  wx:if="{{!result.length}}">
+    <button class='upload-button' bindtap='test'>
+    <image src="111.png" class='button_image' ></image>
+    </button>
   </view>
 
-
-  <!-- 操作数据库 >
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 >
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
-  <!-- 云调用 >
-  <view class="uploader">
-    <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-      <text>云调用</text>
-    </navigator>
-  </view>
-
-  <view class="uploader">
-    <button bindtap='juzikong'>句子控测试</button>
-  </view>
-
-  <view class="uploader">
-    <button bindtap='search_api'>api</button>
+  <!--view wx:if="{{info.length}}">识别到了
+  <text wx:for="{{info}}">{{item.tag_name}},</text>
+  <text>\n</text>
   </view-->
 
-  <image src="{{image}}"></image>
-
-  <view class="uploader">
-    <button bindtap='test'>上传图片</button>
-  </view>
-
   <block wx:if="{{result.length}}">
-    <view>【{{result[show_index].label}}】</view>
-    <view wx:if="{{result[show_index].key}}">{{result[show_index].key}}</view>
-    <view wx:else>{{result[show_index].content}}</view>
-    <view>
-      <text>《{{result[show_index].title}}》</text>
+    <view style='text-align:center;'>【{{result[show_index].label}}】</view>
+    <view class='content-block' wx:if="{{result[show_index].key}}">{{result[show_index].key}}</view>
+    <view wx:else>{{result[show_index].content}}</view>   
+    <view class='title-block'>
+      <text>---《{{result[show_index].title}}》</text>
       <text>{{result[show_index].dynasty}} </text>
       <text>{{result[show_index].author}}</text>
     </view>
-  </block>
-  
+    
+    <button class='smallbutton.first' bindtap='change'>
+      <image src="222.png" class='button_image' ></image>
+    </button>
 
-  <view class="uploader">
-    <button bindtap='change'>换一句</button>
-  </view>
+    <button class='smallbutton.second' bindtap='toDetail'>
+      <image src="333.png" class='button_image' ></image>
+    </button>
 
-  <button bindtap='toDetail'>了解更多</button>
+    <button class='smallbutton.third' bindtap='test'>
+      <image src="111.png" class='button_image' ></image>
+    </button>
+
+    <button class='smallbutton.fourth' bindtap='makeCard'>
+      <image src="444.png" class='button_image' ></image>
+    </button>
+    
+ 
+     </block>
+    
+  <view wx:if="{{!result.length}}" class='content-block'>{{state}}</view>
 
   <!--view class="uploader">
-    <button bindtap='youdao'>翻译测试</button>
+    <button bindtap='cloudSearch'>测试</button>
   </view-->
+  
 
 </view>
+
+  <view hidden='{{canvasHidden}}' class='imageBox' style='height:{{height/width>1.6?height*750/width:1200}}rpx;'>
+  <image wx:if="{{imagePath}}" src="{{imagePath}}" class='imageShow'></image>
+  <canvas wx:if="{{!imagePath}}" class='imageShow' canvas-id='mycanvas'></canvas>
+  <button bindtap='notsave' class='baocun.left'><image  class='button_image' src='turnback.png'/></button>
+  <button class='baocun' bindtap='saveImg'><image  class='button_image' src='save.png'/></button>
+  </view>
+
+<image class='background' src="cloud://cloudforfdemo-mhxfi.636c-cloudforfdemo-mhxfi/bg2.png" mode="aspectFill"></image>
